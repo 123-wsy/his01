@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE generatorConfiguration        PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!-- 数据库驱动包位置,路径请不要有中文-->
+    <classPathEntry location="D:/MavenRepository/mysql/mysql-connector-java/5.1.47/mysql-connector-java-5.1.47.jar"/>
+    <!-- 一个数据库一个context-->
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <!-- 生成的pojo，将implements Serializable -->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
+        <!-- 注释 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/><!-- 是否取消注释 -->
+            <!-- <property name="suppressDate" value="true" />  是否生成注释代时间戳 -->
+        </commentGenerator>
+
+        <!-- 数据库链接URL、用户名、密码 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1:3306/hit" userId="root"
+                        password="root">
+        </jdbcConnection>
+
+        <!-- 类型转换 -->
+        <javaTypeResolver>
+            <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer true，把JDBC DECIMAL
+                和 NUMERIC 类型解析为java.math.BigDecimal -->
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- 生成model模型，设置对应的包名(targetPackage)和存放路径(targetProject)。targetProject可以指定具体的路径,如./src/main/java,也可以使用MAVEN来自动生成,这样生成的代码会在target/generatord-source目录下 -->
+        <javaModelGenerator targetPackage="org.neuedu.his.model" targetProject="./src/main/java">
+            <!-- 是否在当前路径下新加一层schema,eg：false路径com.oop.eksp.user.model 而true:com.oop.eksp.user.model.[schemaName] -->
+            <property name="enableSubPackages" value="false"/>
+            <!-- 从数据库返回的值被清理前后的空格 -->
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!--对应的mapper.xml文件 -->
+        <sqlMapGenerator targetPackage="org.neuedu.his.mapper" targetProject="./src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!-- 对应的Mapper接口类文件 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="org.neuedu.his.mapper"
+                             targetProject="./src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!-- 列出要生成代码的所有表，这里配置的是不生成Example文件 -->
+        <!-- schema即为数据库名tableName为对应的数据库表 domainObjectName是要生成的实体类 enable*ByExample是否生成 example类   -->
+        <!--用户-->
+        <table tableName="user" domainObjectName="User"
+               schema="${gererator.schema}"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!-- 用于指定生成实体类时是否使用实际的列名作为实体类的属性名。false是 Camel Case风格-->
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+        <!--常数类别表-->
+        <table tableName="constatnttype" domainObjectName="ConstatntType"
+               schema="${gererator.schema}"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!-- 用于指定生成实体类时是否使用实际的列名作为实体类的属性名。false是 Camel Case风格-->
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+        <!--常数项表-->
+        <table tableName="constantitem" domainObjectName="Constantitem"
+               schema="${gererator.schema}"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!-- 用于指定生成实体类时是否使用实际的列名作为实体类的属性名。false是 Camel Case风格-->
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+        <!--科室-->
+        <table tableName="department" domainObjectName="Department"
+               schema="${gererator.schema}"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!-- 用于指定生成实体类时是否使用实际的列名作为实体类的属性名。false是 Camel Case风格-->
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+        <!--挂号级别-->
+        <table tableName="registlevel" domainObjectName="RegistLevel"
+               schema="${gererator.schema}"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!-- 用于指定生成实体类时是否使用实际的列名作为实体类的属性名。false是 Camel Case风格-->
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+        <!--结算类别自费还是医保-->
+        <table tableName="settlecategory" domainObjectName="SettleCategory"
+               schema="${gererator.schema}"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!-- 用于指定生成实体类时是否使用实际的列名作为实体类的属性名。false是 Camel Case风格-->
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+        <!--诊断目录-->
+        <table tableName="disecategory" domainObjectName="DiseCategory"
+               schema="${gererator.schema}"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!-- 用于指定生成实体类时是否使用实际的列名作为实体类的属性名。false是 Camel Case风格-->
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+        <table tableName="disease" domainObjectName="Disease"
+               schema="${gererator.schema}"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!-- 用于指定生成实体类时是否使用实际的列名作为实体类的属性名。false是 Camel Case风格-->
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+        <!--非药品收费-->
+        <table tableName="fmeditem" domainObjectName="Fmeditem"
+               schema="${gererator.schema}"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!-- 用于指定生成实体类时是否使用实际的列名作为实体类的属性名。false是 Camel Case风格-->
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+        <!--排班规则-->
+        <table tableName="rule" domainObjectName="Rule"
+               schema="${gererator.schema}"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!-- 用于指定生成实体类时是否使用实际的列名作为实体类的属性名。false是 Camel Case风格-->
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+        <!--排班-->
+        <table tableName="scheduling" domainObjectName="Scheduling"
+               schema="${gererator.schema}"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!-- 用于指定生成实体类时是否使用实际的列名作为实体类的属性名。false是 Camel Case风格-->
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+        <!--挂号信息-->
+        <table tableName="register" domainObjectName="Register"
+               schema="${gererator.schema}"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!-- 用于指定生成实体类时是否使用实际的列名作为实体类的属性名。false是 Camel Case风格-->
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+        <!--病历首页-->
+        <table tableName="medicalrecord" domainObjectName="MedicalRecord"
+               schema="${gererator.schema}"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!-- 用于指定生成实体类时是否使用实际的列名作为实体类的属性名。false是 Camel Case风格-->
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+        <!--科室-->
+        <table tableName="department" domainObjectName="Department"
+               schema="${gererator.schema}"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!-- 用于指定生成实体类时是否使用实际的列名作为实体类的属性名。false是 Camel Case风格-->
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+        <!--患者消费信息-->
+        <table tableName="patientcosts" domainObjectName="PatientCosts"
+               schema="${gererator.schema}"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!-- 用于指定生成实体类时是否使用实际的列名作为实体类的属性名。false是 Camel Case风格-->
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+        <!--发票-->
+        <table tableName="invoice" domainObjectName="Invoice"
+               schema="${gererator.schema}"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!-- 用于指定生成实体类时是否使用实际的列名作为实体类的属性名。false是 Camel Case风格-->
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+        <!--费用-->
+        <table tableName="expenseclass" domainObjectName="Expenseclass"
+               schema="${gererator.schema}"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!-- 用于指定生成实体类时是否使用实际的列名作为实体类的属性名。false是 Camel Case风格-->
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+    </context>
+</generatorConfiguration>
