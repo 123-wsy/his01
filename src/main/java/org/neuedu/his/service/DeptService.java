@@ -6,19 +6,15 @@ import org.neuedu.his.model.RespBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class DeptService {
     @Autowired
     DepartmentMapper departmentMapper;
-    public RespBean getDeptByCodeOrName(Department department) {
-        Department department1 = departmentMapper.getDeptByCodeOrName(department);
-        if(department1 == null){
-            RespBean error = RespBean.error("没这科");
-            return error;
-        }else{
-            RespBean ok = RespBean.ok("查询成功",department1);
-            return ok;
-        }
+    public List<Department> getDeptByCodeOrName(String deptcode,String deptname) {
+        List<Department> department1 = departmentMapper.getDeptByCodeOrName(deptcode,deptname);
+        return department1;
     }
 
     public RespBean delDeptByIds(Integer[] ids) {
