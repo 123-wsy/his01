@@ -1,38 +1,38 @@
 package org.neuedu.his.model;
 
 public class RespBean {
-    private Integer status;
+    private Integer code;
     private String msg;
     private Object data;
 
-    public static RespBean ok(String msg){
+    public static RespBean ok(String msg) {
         return new RespBean(200,msg,null);
     }
-    public static RespBean ok(String msg,Object data){
+    public static RespBean ok(String msg,Object data) {
         return new RespBean(200,msg,data);
     }
-    public static RespBean error(String msg){
+    public static RespBean error(String msg) {
         return new RespBean(500,msg,null);
     }
-    public static RespBean error(String msg,Object data){
+    public static RespBean error(String msg,Object data) {
         return new RespBean(500,msg,data);
     }
 
     private RespBean() {
     }
 
-    private RespBean(Integer status, String msg, Object data) {
-        this.status = status;
+    private RespBean(Integer code, String msg, Object data) {
+        this.code = code;
         this.msg = msg;
         this.data = data;
     }
 
-    public Integer getStatus() {
-        return status;
+    public Integer getCode() {
+        return code;
     }
 
-    public void setStatus(Integer status) {
-        this.status = status;
+    public void setCode(Integer code) {
+        this.code = code;
     }
 
     public String getMsg() {
@@ -43,11 +43,11 @@ public class RespBean {
         this.msg = msg;
     }
 
-    public Object getObject() {
+    public Object getData() {
         return data;
     }
 
-    public void setObject(Object object) {
-        this.data = object;
+    public void setData(Object data) {
+        this.data = data;
     }
 }

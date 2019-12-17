@@ -2,18 +2,18 @@ package org.neuedu.his.controller;
 
 
 import org.neuedu.his.model.RespBean;
+import org.neuedu.his.model.User;
+import org.neuedu.his.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/user")
 public class UserController {
     @Autowired
     UserService userService;
-    @GetMapping("/getUserById")
-    public RespBean getUserById(Integer ){
-        return userService.getUserById();
+    @PostMapping("/getUserByNameAndPass")
+    public RespBean getUserByNameAndPass(@RequestBody User user){
+        return userService.getUserByNameAndPass(user);
     }
 }
