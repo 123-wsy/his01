@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.neuedu.his.mapper.CategoryMapper">
+    <select id="categoryAllInfo" resultType="org.neuedu.his.model.Constanttype">
+        select *
+        from constanttype
+        <where>
+            delmark=1
+            <if test="keywords != null and keywords != ''">
+              and  constantTypeCode like concat('%',#{keywords},'%')
+              or constantTypeName like concat('%',#{keywords},'%')
+            </if>
+        </where>
+    </select>
+    <insert id="addCategory">
+        insert into constanttype(ConstantTypeCode,ConstantTypeName)
+        values (#{constantTypeCode},#{constantTypeName})
+    </insert>
+
+    <select id="categoryName" resultType="org.neuedu.his.model.Constanttype">
+        select *
+        from Constanttype
+        where delmark=1
+    </select>
+
+    <select id="getConstantitem" resultType="org.neuedu.his.model.Constantitem">
+        select ci.*,ct.constantTypeName
+        from Constantitem ci
+        join Constanttype ct
+        on ci.constantTypeID=ct.id
+        <where>
+            ci.delmark=1
+            <if test="typeId!=null and typeId!=''">
+                constanttypeid=#{typeId}
+            </if>
+            <if test="keywords != null and keywords != ''">
+                and  constantCode like concat('%',#{keywords},'%')
+                or constantName like concat('%',#{keywords},'%')
+            </if>
+        </where>
+    </select>
+
+    <insert id="addConstantitem">
+        insert into Constantitem(constantTypeID,constantCode,constantName)
+        values (#{constantTypeID},#{constantCode},#{constantName})
+    </insert>
+
+    <update id="delConstantitem">
+        update `Constantitem`
+        set delmark=0
+        where id=#{id}
+    </update>
+
+    <update id="delMulConstantitemById">
+        update `Constantitem`
+        set delmark=0
+        where id in
+            <foreach collection="ids" item="id" separator="," open="(" close=")">
+                #{id}
+            </foreach>
+    </update>
+
+    <update id="updateConstantitem">
+        update `Constantitem`
+        <set>
+            <if test="constantTypeID !=null and constantTypeID != ''">
+                constantTypeID=#{constantTypeID},
+            </if>
+            <if test="constantCode !=null and constantCode != ''">
+                constantCode=#{constantCode},
+            </if>
+            <if test="constantName !=null and constantName != ''">
+                constantName=#{constantName},
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+    <!--List<Constantitem> serchconstantname();-->
+    <select id="serchconstantname" resultType="org.neuedu.his.model.Constantitem">
+        select *
+        from constantitem
+        where ConstantTypeID=8
+    </select>
+</mapper>

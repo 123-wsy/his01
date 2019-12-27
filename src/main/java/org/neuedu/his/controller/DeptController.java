@@ -24,4 +24,22 @@ public class DeptController {
     public RespBean delDeptByIds(Integer[] ids){
         return deptService.delDeptByIds(ids);
     }
+
+    @GetMapping("/getAllDept")
+    public List<Department> getAllDept(){
+        return deptService.getAllDept();
+    }
+
+    @GetMapping("/deptInfos")
+    public List<Department> deptInfos(){
+        return deptService.deptInfos();
+    }
+    @GetMapping("/getDept")
+    public List<Department> getDept(String deptname){
+        return deptService.getDept(deptname);
+    }
+    @DeleteMapping("/{id}")
+    public RespBean delDept(@PathVariable("id") Integer id){
+        return deptService.delDept(id);
+    }
 }

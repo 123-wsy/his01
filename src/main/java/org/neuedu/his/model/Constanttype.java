@@ -1,17 +1,10 @@
 package org.neuedu.his.model;
 
-import java.io.Serializable;
-
-public class Constanttype implements Serializable {
+public class Constanttype {
     private Integer id;
-
-    private String constanttypecode;
-
-    private String constanttypename;
-
-    private Integer delmark;
-
-    private static final long serialVersionUID = 1L;
+    private String constantTypeCode;
+    private String constantTypeName;
+    private Integer delMark;
 
     public Integer getId() {
         return id;
@@ -21,27 +14,27 @@ public class Constanttype implements Serializable {
         this.id = id;
     }
 
-    public String getConstanttypecode() {
-        return constanttypecode;
+    public String getConstantTypeCode() {
+        return constantTypeCode;
     }
 
-    public void setConstanttypecode(String constanttypecode) {
-        this.constanttypecode = constanttypecode == null ? null : constanttypecode.trim();
+    public void setConstantTypeCode(String constantTypeCode) {
+        this.constantTypeCode = constantTypeCode;
     }
 
-    public String getConstanttypename() {
-        return constanttypename;
+    public String getConstantTypeName() {
+        return constantTypeName;
     }
 
-    public void setConstanttypename(String constanttypename) {
-        this.constanttypename = constanttypename == null ? null : constanttypename.trim();
+    public void setConstantTypeName(String constantTypeName) {
+        this.constantTypeName = constantTypeName;
     }
 
-    public Integer getDelmark() {
-        return delmark;
+    public Integer getDelMark() {
+        return delMark;
     }
 
-    public void setDelmark(Integer delmark) {
-        this.delmark = delmark;
+    public void setDelMark(Integer delMark) {
+        this.delMark = delMark;
     }
 }

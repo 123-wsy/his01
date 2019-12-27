@@ -27,4 +27,26 @@ public class DeptService {
             return ok;
         }
     }
+
+    public List<Department> getAllDept() {
+        return departmentMapper.getAllDept();
+    }
+
+    public List<Department> deptInfos() {
+        return departmentMapper.deptInfos();
+
+    }
+
+    public List<Department> getDept(String deptname) {
+        return departmentMapper.getDept(deptname);
+    }
+
+    public RespBean delDept(Integer id) {
+        int i  = departmentMapper.delDept(id);
+        if (i==0){
+            return RespBean.error("删除失败");
+        }else{
+            return RespBean.ok("删除成功");
+        }
+    }
 }
