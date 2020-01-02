@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.neuedu.his.mapper.SettleCategoryMapper" >
+  <resultMap id="BaseResultMap" type="org.neuedu.his.model.SettleCategory" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="SettleCode" property="settlecode" jdbcType="VARCHAR" />
+    <result column="SettleName" property="settlename" jdbcType="VARCHAR" />
+    <result column="SequenceNo" property="sequenceno" jdbcType="INTEGER" />
+    <result column="DelMark" property="delmark" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, SettleCode, SettleName, SequenceNo, DelMark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from settlecategory
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from settlecategory
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.neuedu.his.model.SettleCategory" >
+    insert into settlecategory (ID, SettleCode, SettleName, 
+      SequenceNo, DelMark)
+    values (#{id,jdbcType=INTEGER}, #{settlecode,jdbcType=VARCHAR}, #{settlename,jdbcType=VARCHAR}, 
+      #{sequenceno,jdbcType=INTEGER}, #{delmark,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="org.neuedu.his.model.SettleCategory" >
+    insert into settlecategory
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="settlecode != null" >
+        SettleCode,
+      </if>
+      <if test="settlename != null" >
+        SettleName,
+      </if>
+      <if test="sequenceno != null" >
+        SequenceNo,
+      </if>
+      <if test="delmark != null" >
+        DelMark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="settlecode != null" >
+        #{settlecode,jdbcType=VARCHAR},
+      </if>
+      <if test="settlename != null" >
+        #{settlename,jdbcType=VARCHAR},
+      </if>
+      <if test="sequenceno != null" >
+        #{sequenceno,jdbcType=INTEGER},
+      </if>
+      <if test="delmark != null" >
+        #{delmark,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.neuedu.his.model.SettleCategory" >
+    update settlecategory
+    <set >
+      <if test="settlecode != null" >
+        SettleCode = #{settlecode,jdbcType=VARCHAR},
+      </if>
+      <if test="settlename != null" >
+        SettleName = #{settlename,jdbcType=VARCHAR},
+      </if>
+      <if test="sequenceno != null" >
+        SequenceNo = #{sequenceno,jdbcType=INTEGER},
+      </if>
+      <if test="delmark != null" >
+        DelMark = #{delmark,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.neuedu.his.model.SettleCategory" >
+    update settlecategory
+    set SettleCode = #{settlecode,jdbcType=VARCHAR},
+      SettleName = #{settlename,jdbcType=VARCHAR},
+      SequenceNo = #{sequenceno,jdbcType=INTEGER},
+      DelMark = #{delmark,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="getSettle" resultType="org.neuedu.his.model.SettleCategory">
+    select *
+    from `settlecategory`
+  </select>
+</mapper>
